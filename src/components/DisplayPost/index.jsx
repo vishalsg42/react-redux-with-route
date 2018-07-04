@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
-import './App.css';
 
-class App extends Component {
+class DisplayPost extends Component {
   render() {
     return (
       <div className="App">
-        {/* hello */}
+        hello
       </div>
     );
   }
 }
 
-export default App;
+
+export default DisplayPost;

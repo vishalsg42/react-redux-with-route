@@ -11,10 +11,14 @@ import { createStore, applyMiddleware } from 'redux';
 // Reducer
 import { reducer } from './reducers/index';
 
+// Route 
+import Routes from './routers/router.config'
+
 const store = createStore(reducer);
+
 ReactDOM.render(
-    <Provider store={store}>
-      <App />
+  <Provider store={store}>
+        <Routes />
     </Provider>
     , document.getElementById('root'));
 registerServiceWorker();
