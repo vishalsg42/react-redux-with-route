@@ -1,0 +1,17 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+.post-box {
+    width: 20%;
+    padding: 10px;
+    margin: 10px 10px;
+    display: inline-block;
+    box-shadow: 0 0 2px 0px black;
+    text-align: center
+}
+
+.post-box h2 {
+    margin-bottom: 10px;
+    text-transform: capitalize
+}

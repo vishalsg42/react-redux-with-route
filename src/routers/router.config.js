@@ -1,8 +1,8 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Redirect,Switch } from 'react-router-dom';
 
 // Components
-import DisplayPost from '../components/DisplayPost/index'
+import Post from '../components/Post/index'
 
 let  getRoute = (path,component) => <Route path={path} component={component}  />
 
@@ -12,8 +12,10 @@ function Routes  () {
   return (
       <Router>
           <div>
-            <Redirect from='/' to='/home' /> 
-            { getRoute('/home',DisplayPost) }
+            <Switch>
+            <Redirect exact from='/' to='/post' /> 
+            { getRoute('/post',Post) }
+            </Switch>
           </div>
       </Router>
     );
