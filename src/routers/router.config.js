@@ -7,14 +7,14 @@ import Post from '../components/Post/index'
 let  getRoute = (path,component) => <Route path={path} component={component}  />
 
 
-function Routes  () {
+const Routes = () => {
 
   return (
       <Router>
           <div>
             <Switch>
-            <Redirect exact from='/' to='/post' /> 
-            { getRoute('/post',Post) }
+              <Redirect exact from='/' to='/post' /> 
+              { getRoute('/post',Post) }
             </Switch>
           </div>
       </Router>
