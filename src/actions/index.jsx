@@ -15,7 +15,6 @@ export function fetchPosts() {
     dispatch(fetchPostRequest());
     axios.get(`${POST_API_URL}`).then(
       response => {
-        console.log(response.data);
         dispatch(fetchPostSuccess(response.data));
         return  response;
       }

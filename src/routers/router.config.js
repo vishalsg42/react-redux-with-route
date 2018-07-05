@@ -15,6 +15,7 @@ const Routes = () => {
             <Switch>
               <Redirect exact from='/' to='/post' /> 
               { getRoute('/post',Post) }
+              { getRoute('/post/${}',Post) }
             </Switch>
           </div>
       </Router>
