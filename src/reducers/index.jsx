@@ -6,6 +6,7 @@ import  {
 
 const INITIAL_STATE = {
   post:'',
+  'isFetchLoad': true
 }
 
 export const  reducer = (previousState = INITIAL_STATE ,actions)=> {
@@ -17,19 +18,18 @@ export const  reducer = (previousState = INITIAL_STATE ,actions)=> {
       'isFetchLoad': true
     }
     case FETCH_POST_SUCCESS:
-    // console.log(actions);
     const data = actions.data.splice(0,10)
     return {
             'post': data,
             'isFetchLoad': false
           }
-        case FETCH_POST_FALIURE:
-          return {
-            ...previousState,
-            'isFetchLoad': true
-            
-          }
-        default: 
-          return previousState;
+    case FETCH_POST_FALIURE:
+      return {
+        ...previousState,
+        'isFetchLoad': true
+        
+      }
+    default: 
+      return previousState;
     }
 }

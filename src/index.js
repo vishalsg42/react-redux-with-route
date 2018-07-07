@@ -5,20 +5,26 @@ import registerServiceWorker from './registerServiceWorker';
 
 // Redux
 import { Provider } from 'react-redux';
-import { createStore,applyMiddleware } from 'redux';
+import { createStore,applyMiddleware,combineReducers } from 'redux';
 import thunk from 'redux-thunk';
 
 // Reducer
 import { reducer } from './reducers/index';
+import { fetchDetailPost } from './reducers/detail-post';
 
 // Route 
 import Routes from './routers/router.config'
 
-const store = createStore(reducer,applyMiddleware(thunk));
+const rootReducer = combineReducers({
+  post: reducer,
+  detailPost: fetchDetailPost
+})
+
+const store = createStore(rootReducer,applyMiddleware(thunk));
 
 ReactDOM.render(
   <Provider store={store}>
-        <Routes />
-    </Provider>
+    <Routes />
+  </Provider>
     , document.getElementById('root'));
 registerServiceWorker();

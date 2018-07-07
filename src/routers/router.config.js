@@ -3,8 +3,9 @@ import { BrowserRouter as Router, Route, Redirect,Switch } from 'react-router-do
 
 // Components
 import Post from '../components/Post/index'
+import PostDetail from '../components/PostDetail/index'
 
-let  getRoute = (path,component) => <Route path={path} component={component}  />
+let  getRoute = (path,component) => <Route exact path={path} component={component}  />
 
 
 const Routes = () => {
@@ -15,7 +16,7 @@ const Routes = () => {
             <Switch>
               <Redirect exact from='/' to='/post' /> 
               { getRoute('/post',Post) }
-              { getRoute('/post/${}',Post) }
+              { getRoute('/post/:id',PostDetail) }
             </Switch>
           </div>
       </Router>

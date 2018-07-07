@@ -10,8 +10,11 @@ const POST_API_URL = 'https://jsonplaceholder.typicode.com/posts';
 
 export const fetchDetailPost= (id)=>{
   return dispatch => {
+    
     dispatch(fetchDetailPostRequest());
+    
     axios.get(`${POST_API_URL+'/'+id}`).then( response =>{
+      
         dispatch(fetchDetailPostSuccess(response))
         return response;
     }).catch(error=> {
@@ -30,15 +33,15 @@ function fetchDetailPostRequest() {
 
 function fetchDetailPostSuccess(response) {
   return {
-    type: REQUEST_FETCH_DETAIL_POST,
+    type: FETCH_DETAIL_POST_SUCCESS,
     'isFetchDetailPost': false,
     data: response
   }
 }
 function fetchDetailPostFaliure(error) {
   return {
-    type: REQUEST_FETCH_DETAIL_POST,
-    'isFetchDetailPost': true,
+    type: FETCH_DETAIL_POST_FALIURE,
+    'isFetchDetailPost': false,
     error
   }
 }

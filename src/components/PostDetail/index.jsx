@@ -3,40 +3,43 @@ import PostBox from '../Common/PostBox';
 import Spinner from '../Common/Spinner';
 import { connect } from 'react-redux';
 import './styles/style.css';
+import { Link } from 'react-router-dom';
 
 
 // actions
 import { fetchDetailPost } from '../../actions/detail-post'
 
 // link
-import { Link } from 'react-router-dom';
-class Post extends Component {
+class PostDetail extends Component {
   // constructor(props) {
   //   super(props);
   // }
   componentDidMount() {
-    this.props.fetchPosts();
-    console.log('mount-->',this.props);
+    this.props.fetchDetailPost(this.props.match.params.id);
   }
   render() {
 
       return (
-        // { let  postBlock = ''; }
-        <div className='post-container'>
-         {/* { this.props.posts  ? this.props.posts.map(postItem=> {
-          return <Link to={`${this.props.match.url+'/'+postItem.id}`} key={postItem.id}  ></Link>
-        }) : <Spinner/>  } */}
-        <PostBox  title='{postItem.title}' description='{postItem.body'} />
+        <div>
+          {
+            !this.props.postDetail.isDetailPost ?  
+            <div>
+              <Link to="/">home</Link>
+              <PostBox  title={this.props.postDetail.detailPost.title} description={this.props.postDetail.detailPost.body} />  
+            </div>
+            : <Spinner />
+          }
+         
         </div>
     );
   }
 }
 
 const mapStatetoProps=(state)=> {
-  console.log('state',state)
   return {
-    
+    postDetail: state.detailPost,
+    isDetailPost: state.isDetailPost
   }
 }
 
-export default connect(mapStatetoProps,{ fetchDetailPost })(Post);
+export default connect(mapStatetoProps,{ fetchDetailPost })(PostDetail);
